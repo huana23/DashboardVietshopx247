@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+@theme {
+  --color-surface: #0b1326;
+  --color-surface-container-lowest: #060e20;
+  --color-surface-container-low: #131b2e;
+  --color-surface-container: #171f33;
+  --color-surface-container-high: #222a3d;
+  --color-surface-container-highest: #2d3449;
+  --color-on-surface: #dae2fd;
+  --color-on-surface-variant: #bcc9ce;
+  --color-outline-variant: #3d494d;
+  --color-primary: #00dfc1;
+  --color-primary-container: #00baa0;
+  --color-secondary-fixed: #d5e3fd;
+  --color-tertiary: #ffb95f;
+  --color-error: #ffb4ab;
+  --font-headline: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+}
+
+body {
+  margin: 0;
+  background: var(--color-surface);
+  color: var(--color-on-surface);
+  font-family: "Inter", sans-serif;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
+}
+
+.font-headline {
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.glass-panel {
+  background: rgba(6, 14, 32, 0.6);
+  backdrop-filter: blur(24px);
+}
+
+.metric-pulse {
+  animation: metricPulse 300ms ease-out;
+}
+
+@keyframes metricPulse {
+  0% {
+    background-color: rgba(0, 186, 160, 0.2);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+.thin-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.thin-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(61, 73, 77, 0.4);
+  border-radius: 9999px;
+}
