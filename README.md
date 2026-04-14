@@ -1,6 +1,6 @@
 # DashboardVietshopx247
 
-Dashboard giám sát và vận hành hệ thống thương mại điện tử, tập trung tài liệu cho **Frontend**.
+Dashboard giám sát và vận hành hệ thống thương mại điện tử cho Công ty Vietshopx247
 
 ---
 
