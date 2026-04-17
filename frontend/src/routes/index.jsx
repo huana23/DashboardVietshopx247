@@ -9,8 +9,14 @@ import Partners from "../pages/Partners";
 import Support from "../pages/Support";
 import Finance from "../pages/Finance";
 import NotFound from "../pages/NotFound";
+import Login from "../pages/Login";
 
 const publicRoutes = [
+  { path: "/login", component: Login, layout: null },
+  { path: "*", component: NotFound, layout: null },
+];
+
+const privateRoutes = [
   { path: "/", component: Dashboard },
   { path: "/dashboard", component: Dashboard },
   { path: "/health", component: Health },
@@ -22,9 +28,6 @@ const publicRoutes = [
   { path: "/support", component: Support },
   { path: "/marketing", component: Marketing },
   { path: "/access-control", component: AccessControl },
-  { path: "*", component: NotFound },
 ];
-
-const privateRoutes = [];
 
 export { publicRoutes, privateRoutes };

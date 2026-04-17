@@ -1,4 +1,5 @@
 export { default as apiClient } from "./apiClient";
+export * from "./authService";
 export * from "./accessControlService";
 export * from "./dashboardService";
 export * from "./healthService";

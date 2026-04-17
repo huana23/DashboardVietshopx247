@@ -3,21 +3,26 @@ import { NavLink } from "react-router-dom";
 const Sidebar = ({
   logoText = "Hệ Thống Giám Sát",
   subtitle = "Bảng Điều Khiển Quản Trị",
+  isOpen = false,
+  onClose = () => {},
   menuItems = [
-    { name: "Tổng quan", icon: "dashboard", href: "/dashboard"},
-    { name: "Hệ Thống", icon: "dns" ,
-       children: [
+    { name: "Tổng quan", icon: "dashboard", href: "/dashboard" },
+    {
+      name: "Hệ Thống",
+      icon: "dns",
+      children: [
         { name: "Giám sát hệ thống", href: "/health" },
         { name: "Giải cứu dữ liệu", href: "/health/data-rescue" },
         { name: "Giảm tải hệ thống", href: "/health/reduce-system-load" },
         { name: "Giảm tải người dùng", href: "/health/reduce-user-load" },
-
       ],
     },
     { name: "Đối tác", icon: "lan", href: "/partners" },
     { name: "Chăm sóc khách hàng", icon: "database", href: "/support" },
     { name: "Marketing", icon: "terminal", href: "/marketing" },
-    { name: "Tài chính", icon: "bar_chart", 
+    {
+      name: "Tài chính",
+      icon: "bar_chart",
       children: [
         { name: "Tổng quan", href: "/finance" },
         { name: "Doanh thu", href: "/finance/revenue" },
@@ -38,100 +43,114 @@ const Sidebar = ({
       error: "bg-error",
     }[systemStatus.color] ?? "bg-primary shadow-[0_0_8px_#00dfc1]";
 
-  
-
   return (
-    <aside className="fixed left-0 top-0 z-40 hidden h-screen w-64 flex-col bg-surface-container-low py-6 shadow-2xl shadow-black/20 md:flex">
-      {/* Header */}
-      <div className="mb-8 px-6">
-        <div className="font-headline mb-1 text-xl font-bold text-primary">{logoText}</div>
-        <div className="flex items-center gap-2">
-          <span className={`h-2 w-2 rounded-full ${statusColorClass}`}></span>
-          <span className="text-xs font-medium tracking-wide text-on-surface-variant/70">
-            {subtitle}
-          </span>
+    <>
+      {/* Mobile overlay - closes sidebar when clicked */}
+      {isOpen && <div className="fixed inset-0 z-30 bg-black/50 md:hidden" onClick={onClose} />}
+
+      <aside
+        className={`flex h-screen w-64 flex-col bg-surface-container-low py-6 shadow-2xl shadow-black/20 transition-transform duration-300 ${
+          isOpen
+            ? "fixed left-0 top-0 z-40 translate-x-0"
+            : "fixed left-0 top-0 z-40 -translate-x-full"
+        } md:static md:relative md:z-auto md:translate-x-0`}
+      >
+        {/* Header */}
+        <div className="mb-8 px-6 flex items-center justify-between">
+          <div>
+            <div className="font-headline mb-1 text-xl font-bold text-primary">{logoText}</div>
+            <div className="flex items-center gap-2">
+              <span className={`h-2 w-2 rounded-full ${statusColorClass}`}></span>
+              <span className="text-xs font-medium tracking-wide text-on-surface-variant/70">
+                {subtitle}
+              </span>
+            </div>
+          </div>
+          <button className="md:hidden" onClick={onClose}>
+            <span className="material-symbols-outlined text-on-surface-variant">close</span>
+          </button>
         </div>
-      </div>
 
-      {/* Navigation */}
-      <nav className="flex-1 space-y-1" aria-label="Sidebar navigation">
-        {menuItems.map((item) => {
-          const hasChildren = Array.isArray(item.children) && item.children.length > 0;
+        {/* Navigation */}
+        <nav className="flex-1 space-y-1" aria-label="Sidebar navigation">
+          {menuItems.map((item) => {
+            const hasChildren = Array.isArray(item.children) && item.children.length > 0;
 
-          if (!hasChildren) {
-            return (
-              <NavLink
-                key={item.name}
-                to={item.href}
-                end
-                aria-label={item.name}
-                className={({ isActive }) =>
-                  `flex items-center gap-3 px-6 py-3 text-sm font-medium tracking-wide transition-all ${
-                    isActive
-                      ? "translate-x-1 border-r-2 border-primary bg-surface-container text-primary"
-                      : "text-on-surface-variant/70 hover:bg-surface-container-high hover:text-on-surface-variant"
-                  }`
-                }
-              >
-                <span className="material-symbols-outlined">{item.icon}</span>
-                <span>{item.name}</span>
-              </NavLink>
-            );
-          }
-
-          const isOpen = !!open[item.name];
-
-          return (
-            <div key={item.name} className="space-y-1">
-              <button
-                type="button"
-                onClick={() => setOpen((p) => ({ [item.name]: !p[item.name] }))}
-                aria-expanded={isOpen}
-                className={`flex w-full items-center justify-between gap-3 px-6 py-3 text-sm font-medium tracking-wide transition-all text-on-surface-variant/90 hover:bg-surface-container-high ${
-                  isOpen ? "bg-surface-container text-primary" : ""
-                }`}
-              >
-                <span className="flex items-center gap-3">
+            if (!hasChildren) {
+              return (
+                <NavLink
+                  key={item.name}
+                  to={item.href}
+                  end
+                  aria-label={item.name}
+                  className={({ isActive }) =>
+                    `flex items-center gap-3 px-6 py-3 text-sm font-medium tracking-wide transition-all ${
+                      isActive
+                        ? "translate-x-1 border-r-2 border-primary bg-surface-container text-primary"
+                        : "text-on-surface-variant/70 hover:bg-surface-container-high hover:text-on-surface-variant"
+                    }`
+                  }
+                >
                   <span className="material-symbols-outlined">{item.icon}</span>
                   <span>{item.name}</span>
-                </span>
+                </NavLink>
+              );
+            }
 
-                <span
-                  className={`material-symbols-outlined transition-transform duration-150 ${
-                    isOpen ? "rotate-90" : ""
+            const isOpen = !!open[item.name];
+
+            return (
+              <div key={item.name} className="space-y-1">
+                <button
+                  type="button"
+                  onClick={() => setOpen((p) => ({ [item.name]: !p[item.name] }))}
+                  aria-expanded={isOpen}
+                  className={`flex w-full items-center justify-between gap-3 px-6 py-3 text-sm font-medium tracking-wide transition-all text-on-surface-variant/90 hover:bg-surface-container-high ${
+                    isOpen ? "bg-surface-container text-primary" : ""
                   }`}
-                  aria-hidden
                 >
-                  chevron_right
-                </span>
-              </button>
+                  <span className="flex items-center gap-3">
+                    <span className="material-symbols-outlined">{item.icon}</span>
+                    <span>{item.name}</span>
+                  </span>
 
-              {isOpen && (
-                <div className="space-y-1">
-                  {item.children.map((child) => (
-                    <NavLink
-                      key={child.name}
-                      to={child.href}
-                      end
-                      className={({ isActive }) =>
-                        `flex items-center gap-3 pl-12 pr-6 py-2 text-sm font-medium tracking-wide transition-all ${
-                          isActive
-                            ? "translate-x-1 border-r-2 border-primary bg-surface-container text-primary"
-                            : "text-on-surface-variant/70 hover:bg-surface-container-high hover:text-on-surface-variant"
-                        }`
-                      }
-                    >
-                      <span className="inline-block w-3" />
-                      <span>{child.name}</span>
-                    </NavLink>
-                  ))}
-                </div>
-              )}
-            </div>
-          );
-        })}
-      </nav>
-    </aside>
+                  <span
+                    className={`material-symbols-outlined transition-transform duration-150 ${
+                      isOpen ? "rotate-90" : ""
+                    }`}
+                    aria-hidden
+                  >
+                    chevron_right
+                  </span>
+                </button>
+
+                {isOpen && (
+                  <div className="space-y-1">
+                    {item.children.map((child) => (
+                      <NavLink
+                        key={child.name}
+                        to={child.href}
+                        end
+                        className={({ isActive }) =>
+                          `flex items-center gap-3 pl-12 pr-6 py-2 text-sm font-medium tracking-wide transition-all ${
+                            isActive
+                              ? "translate-x-1 border-r-2 border-primary bg-surface-container text-primary"
+                              : "text-on-surface-variant/70 hover:bg-surface-container-high hover:text-on-surface-variant"
+                          }`
+                        }
+                      >
+                        <span className="inline-block w-3" />
+                        <span>{child.name}</span>
+                      </NavLink>
+                    ))}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </nav>
+      </aside>
+    </>
   );
 };
 

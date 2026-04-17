@@ -1,14 +1,19 @@
+import { useState } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import Sidebar from "./Sidebar";
 
 function DefaultLayout({ children }) {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
+
   return (
-    <div className="flex min-h-screen bg-surface text-on-surface">
-      <Sidebar />
-      <main className="ml-0 flex min-w-0 flex-1 flex-col md:ml-64">
-        <Header />
-        {children}
+    <div className="flex h-screen bg-surface text-on-surface">
+      <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+      <main className="flex flex-col flex-1 min-w-0 h-screen">
+        <Header onMenuClick={toggleSidebar} />
+        <div className="flex-1 overflow-y-auto overflow-x-hidden">{children}</div>
         <Footer />
       </main>
     </div>

@@ -1,8 +1,12 @@
-function Header({ userName = "Admin", userRole = "System Admin", avatarUrl }) {
+import { useAuth } from "../../../../hooks/useAuth";
+
+function Header({ userName = "Admin", userRole = "System Admin", avatarUrl, onMenuClick }) {
+  const { isAuthenticated, logout } = useAuth();
+
   return (
     <header className="sticky top-0 z-50 flex w-full items-center justify-between bg-surface px-6 py-3">
       <div className="flex items-center gap-4">
-        <button className="md:hidden">
+        <button className="md:hidden" onClick={onMenuClick}>
           <span className="material-symbols-outlined text-primary">menu</span>
         </button>
         <div className="ml-4 hidden items-center rounded-full bg-surface-container-low px-4 py-1.5 md:flex">
@@ -26,6 +30,17 @@ function Header({ userName = "Admin", userRole = "System Admin", avatarUrl }) {
         <button className="cursor-pointer transition-transform duration-500 hover:rotate-90">
           <span className="material-symbols-outlined text-on-surface-variant">settings</span>
         </button>
+
+        {isAuthenticated ? (
+          <button
+            title="Đăng xuất"
+            onClick={() => logout()}
+            className="cursor-pointer transition-transform duration-200 hover:opacity-80"
+          >
+            <span className="material-symbols-outlined text-on-surface-variant">logout</span>
+          </button>
+        ) : null}
+
         <div className="flex items-center gap-3 border-l border-outline-variant/20 pl-4">
           <img
             loading="lazy"

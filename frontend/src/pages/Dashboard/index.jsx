@@ -12,8 +12,7 @@ function Dashboard() {
     useDashboardData();
 
   return (
-    <section className="space-y-6 p-6">
-
+    <section className="flex flex-col gap-4 lg:gap-5 xl:gap-6 p-6 w-full">
       {loading ? (
         <div className="rounded-xl bg-surface-container-low p-6 text-sm text-on-surface-variant">
           Loading dashboard data...
@@ -26,13 +25,13 @@ function Dashboard() {
         </div>
       ) : null}
 
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="w-full grid grid-cols-1 gap-4 lg:gap-5 xl:gap-6 sm:grid-cols-2 lg:grid-cols-4 auto-rows-max">
         {metrics.map((metric) => (
           <MetricCard key={metric.title} {...metric} />
         ))}
       </div>
 
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
+      <div className="w-full flex-1 grid grid-cols-1 gap-4 lg:gap-5 xl:gap-6 lg:grid-cols-12 auto-rows-fr">
         <ThroughputChartPanel data={chartData} onExport={() => {}} />
         <AlertsPanel alerts={alerts} />
       </div>

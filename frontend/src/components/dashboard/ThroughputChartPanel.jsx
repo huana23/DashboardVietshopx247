@@ -12,27 +12,29 @@ function ThroughputChartPanel({ data, onExport }) {
   const hasData = Array.isArray(data) && data.length > 0;
 
   return (
-    <section className="rounded-xl bg-surface-container-low p-6 lg:col-span-8">
-      <div className="mb-8 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+    <section className="w-full h-full flex flex-col rounded-xl bg-surface-container-low p-4 lg:p-6 lg:col-span-8">
+      <div className="mb-6 flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-center">
         <div>
-          <h2 className="font-headline text-lg font-bold text-on-surface">
+          <h2 className="font-headline text-base lg:text-lg font-bold text-on-surface">
             Tải hệ thống & Mức sử dụng CPU
           </h2>
-          <p className="text-sm text-on-surface-variant/70">Phân tích lưu lượng trong 24 giờ qua</p>
+          <p className="text-xs lg:text-sm text-on-surface-variant/70">
+            Phân tích lưu lượng trong 24 giờ qua
+          </p>
         </div>
-        <div className="flex gap-2">
-          <span className="rounded-full border border-primary/20 bg-surface-container-high px-3 py-1 text-[10px] font-bold text-primary">
+        <div className="flex gap-1.5 lg:gap-2">
+          <span className="rounded-full border border-primary/20 bg-surface-container-high px-2 lg:px-3 py-1 lg:py-1.5 text-xs font-bold text-primary whitespace-nowrap">
             LIVE
           </span>
           <button
             onClick={onExport}
-            className="rounded-full bg-surface-container-highest px-3 py-1 text-[10px] font-bold text-on-surface-variant"
+            className="rounded-full bg-surface-container-highest px-2 lg:px-3 py-1 lg:py-1.5 text-xs font-bold text-on-surface-variant whitespace-nowrap"
           >
             24H
           </button>
           <button
             onClick={onExport}
-            className="rounded-full bg-surface-container-highest px-3 py-1 text-[10px] font-bold text-on-surface-variant"
+            className="rounded-full bg-surface-container-highest px-2 lg:px-3 py-1 lg:py-1.5 text-xs font-bold text-on-surface-variant whitespace-nowrap"
           >
             7D
           </button>
@@ -40,7 +42,7 @@ function ThroughputChartPanel({ data, onExport }) {
       </div>
 
       {hasData ? (
-        <div className="h-64 w-full">
+        <div className="flex-1 w-full">
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart data={data}>
               <defs>

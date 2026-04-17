@@ -6,7 +6,7 @@ import Checklist from "../../../components/common/Checklist";
 
 function DataRescue() {
   return (
-    <section className="space-y-6 p-6">
+    <section className="flex flex-col gap-6 p-6 w-full h-full overflow-y-auto">
       <PageContainer
         title="Quy Trình Ứng Cứu Dữ Liệu"
         description="Giảm thiểu thời gian gián đoạn dịch vụ (downtime), hạn chế mất mát dữ liệu,
@@ -17,9 +17,7 @@ function DataRescue() {
       <Section title="📊 Chỉ số cam kết (RTO / RPO)">
         <Table
           className="border border-outline-variant bg-color-surface-container-high text-color-on-surface"
-          headers={[
-            "Mức độ", "Mô tả", "Thời gian khôi phục (RTO)", "Mất dữ liệu cho phép (RPO)"
-          ]}
+          headers={["Mức độ", "Mô tả", "Thời gian khôi phục (RTO)", "Mất dữ liệu cho phép (RPO)"]}
           rows={[
             ["SEV-1", "Sự cố nghiêm trọng", "≤ 30 phút", "≤ 5 phút"],
             ["SEV-2", "Sự cố mức cao", "≤ 2 giờ", "≤ 30 phút"],
@@ -152,7 +150,8 @@ pg_restore -U user -d db backup.dump`}
       {/* DRILL */}
       <Section title="🧪 Diễn tập khôi phục hệ thống">
         <p className="text-sm text-on-surface-variant">
-          Thực hiện định kỳ mỗi quý với các kịch bản: mất database, mất dữ liệu, hoặc lỗi toàn hệ thống.
+          Thực hiện định kỳ mỗi quý với các kịch bản: mất database, mất dữ liệu, hoặc lỗi toàn hệ
+          thống.
         </p>
       </Section>
 
@@ -189,7 +188,8 @@ pg_restore -U user -d db backup.dump`}
 
           {/* Lưu ý */}
           <p className="text-xs text-gray-600">
-            ⚠️ Chỉ gọi điện trực tiếp với sự cố SEV-1. Các trường hợp khác ưu tiên liên lạc qua chat.
+            ⚠️ Chỉ gọi điện trực tiếp với sự cố SEV-1. Các trường hợp khác ưu tiên liên lạc qua
+            chat.
           </p>
         </div>
       </Section>
