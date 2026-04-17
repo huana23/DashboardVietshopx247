@@ -31,7 +31,7 @@ function EmergencySectionGrid({ procedures, contacts, guidelines }) {
     <section className="grid grid-cols-1 gap-6 xl:grid-cols-3">
       <EmergencyCard
         icon="emergency"
-        title="Emergency Procedures"
+        title="Thủ tục khẩn cấp"
         label="Quy trình ứng cứu thông tin"
         tone="error"
       >
@@ -58,7 +58,7 @@ function EmergencySectionGrid({ procedures, contacts, guidelines }) {
 
       <EmergencyCard
         icon="contact_phone"
-        title="Emergency Contacts"
+        title="Liên hệ khẩn cấp"
         label="Số điện thoại liên hệ"
         tone="primary"
       >
@@ -83,7 +83,7 @@ function EmergencySectionGrid({ procedures, contacts, guidelines }) {
 
       <EmergencyCard
         icon="assignment_late"
-        title="Incident Guidelines"
+        title="Hướng dẫn sự cố"
         label="Hướng dẫn xử lý"
         tone="tertiary"
       >

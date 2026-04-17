@@ -4,7 +4,7 @@ function ServerHealthGrid({ servers }) {
   return (
     <section className="rounded-xl bg-surface-container-low p-6">
       <div className="mb-6 flex items-center justify-between">
-        <h2 className="font-headline text-lg font-bold text-on-surface">Real-time Server Health</h2>
+        <h2 className="font-headline text-lg font-bold text-on-surface">Tình trạng máy chủ theo thời gian thực</h2>
         <div className="flex items-center gap-4 text-xs text-on-surface-variant">
           <div className="flex items-center gap-1.5">
             <span className="h-2 w-2 rounded-full bg-primary"></span> Online

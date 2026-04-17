@@ -16,9 +16,9 @@ function ThroughputChartPanel({ data, onExport }) {
       <div className="mb-8 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
         <div>
           <h2 className="font-headline text-lg font-bold text-on-surface">
-            System Load & CPU Utilization
+            Tải hệ thống & Mức sử dụng CPU
           </h2>
-          <p className="text-sm text-on-surface-variant/70">Traffic analysis over last 24 hours</p>
+          <p className="text-sm text-on-surface-variant/70">Phân tích lưu lượng trong 24 giờ qua</p>
         </div>
         <div className="flex gap-2">
           <span className="rounded-full border border-primary/20 bg-surface-container-high px-3 py-1 text-[10px] font-bold text-primary">

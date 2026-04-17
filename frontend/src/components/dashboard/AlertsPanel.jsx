@@ -9,9 +9,9 @@ function AlertsPanel({ alerts }) {
   return (
     <section className="flex flex-col rounded-xl bg-surface-container-low p-6 lg:col-span-4">
       <div className="mb-6 flex items-center justify-between">
-        <h2 className="font-headline text-lg font-bold text-on-surface">Active Alerts</h2>
+        <h2 className="font-headline text-lg font-bold text-on-surface">Cảnh báo hoạt động</h2>
         <span className="rounded bg-error/10 px-2 py-0.5 text-[10px] font-bold uppercase text-error">
-          {safeAlerts.length} Active
+          {safeAlerts.length} Cảnh báo
         </span>
       </div>
 
@@ -46,7 +46,7 @@ function AlertsPanel({ alerts }) {
       </div>
 
       <button className="mt-5 w-full py-3 text-xs font-bold text-on-surface-variant transition-colors hover:text-on-surface">
-        View All Event Logs
+        Xem tất cả cảnh báo
       </button>
     </section>
   );

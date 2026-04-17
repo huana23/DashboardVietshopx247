@@ -1,11 +1,21 @@
 function PageContainer({ title, description }) {
   return (
-    <section className="p-6 md:p-8">
-      <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-        <h1 className="text-2xl font-bold text-slate-900">{title}</h1>
-        <p className="mt-2 text-sm text-slate-600">{description}</p>
+      <div
+        className="rounded-xl p-6 transition-transform transform hover:-translate-y-1 hover:shadow-xl"
+        style={{
+          background: "linear-gradient(90deg, var(--color-surface-container), var(--color-surface-container-high))",
+          borderLeft: "4px solid var(--color-primary)",
+        }}
+      >
+        <h1 className="text-2xl font-bold text-on-surface flex items-center gap-3">
+          <span
+            className="inline-block rounded-full"
+            style={{ width: 10, height: 10, background: "var(--color-primary)" }}
+          />
+          {title}
+        </h1>
+        <p className="mt-2 text-sm text-on-surface-variant">{description}</p>
       </div>
-    </section>
   );
 }
 

@@ -1,20 +1,17 @@
-function Header({ userName = "Admin Root", userRole = "System Admin", avatarUrl }) {
+function Header({ userName = "Admin", userRole = "System Admin", avatarUrl }) {
   return (
     <header className="sticky top-0 z-50 flex w-full items-center justify-between bg-surface px-6 py-3">
       <div className="flex items-center gap-4">
         <button className="md:hidden">
           <span className="material-symbols-outlined text-primary">menu</span>
         </button>
-        <div className="font-headline text-xl font-black uppercase tracking-widest text-primary">
-          The Sentinel
-        </div>
         <div className="ml-4 hidden items-center rounded-full bg-surface-container-low px-4 py-1.5 md:flex">
           <span className="material-symbols-outlined mr-2 text-sm text-on-surface-variant">
             search
           </span>
           <input
             type="text"
-            placeholder="Search systems..."
+            placeholder="Tìm kiếm..."
             aria-label="Search systems"
             className="w-64 border-none bg-transparent text-sm text-on-surface-variant placeholder:text-outline-variant focus:outline-none"
           />

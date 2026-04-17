@@ -1,4 +1,4 @@
-const Footer = ({ companyName = "The Sentinel", year = 2026 }) => {
+const Footer = ({ companyName = "DashboardVietshopx247", year = 2026 }) => {
   return (
     <footer
       role="contentinfo"
@@ -7,10 +7,9 @@ const Footer = ({ companyName = "The Sentinel", year = 2026 }) => {
       <div className="flex items-center gap-3">
         <span className="h-2 w-2 rounded-full bg-primary"></span>
         <p className="font-medium">
-          &copy; {year} {companyName} - Observatory Console
+          &copy; {year} {companyName} - Bảng điều khiển quan sát
         </p>
       </div>
-      <p className="hidden md:block">Mission control interface for infrastructure operations</p>
     </footer>
   );
 };
